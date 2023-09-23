@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TrainingXamarin.Views.HomePage"
+             xmlns:vm="clr-namespace:TrainingXamarin.ViewModels"
+             xmlns:control="clr-namespace:TrainingXamarin.Controls;assembly=TrainingXamarin"
+             xmlns:model="clr-namespace:TrainingXamarin.Models"
+             xmlns:card="clr-namespace:TrainingXamarin.Controls.Card;assembly=TrainingXamarin"
+             Background="Black"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <control:Topbar/>
+            <ScrollView Orientation="Vertical" VerticalScrollBarVisibility="Never">
+                <StackLayout Spacing="20">
+                    <RelativeLayout Margin="25, 0" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                        <Frame
+                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                            RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ArtistImage, Property=Height, Factor=0.83}"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ArtistImage, Property=Height, Factor=0.17}"
+                            BackgroundColor="#FF15B3C7" CornerRadius="10" />
+                        <StackLayout
+                            RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ArtistImage, Property=Width, Factor=1.7}"
+                            RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=ArtistImage, Property=Width, Factor=0.35}"
+                            Margin="20, 0"
+                            VerticalOptions="Center">
+                            <Label Text="Popular" TranslationY="12" MaxLines="1" FontSize="19" TextColor="White"/>
+                            <Label Text="{Binding PopularArtist.Album}" LineBreakMode="TailTruncation" MaxLines="1"
+                                   FontSize="24" FontAttributes="Bold" TextColor="White"/>
+                            <Label Text="{Binding PopularArtist.Name}" TranslationY="-12" MaxLines="1" FontSize="19" TextColor="White"/>
+                        </StackLayout>
+                        <Image x:Name="ArtistImage"
+                               RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=0.55}"
+                               HeightRequest="160" Source="{Binding PopularArtist.Image}" />
+                    </RelativeLayout>
+
+                    <StackLayout Margin="20, 0, 0, 0">
+                        <Label TextColor="White" FontSize="24">Today's Hits</Label>
+                        <CollectionView HeightRequest="180" ItemsSource="{Binding TodayHits}"
+                                        ItemsLayout="HorizontalList">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="0, 0,10,0">
+                                        <card:ArtistTodayHit 
+                                            ImageSize="128" 
+                                            Artist="{Binding Name}" 
+                                            Album="{Binding Album}"
+                                            Source="{Binding Image}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+
+                    <StackLayout Spacing="15" Margin="20, 0, 0, 0">
+                        <ScrollView HorizontalScrollBarVisibility="Never" Orientation="Horizontal">
+                            <StackLayout Spacing="40" Padding="0, 0, 20, 0" Orientation="Horizontal">
+                                <Label FontAttributes="Bold" TextColor="White" FontSize="22">Artists</Label>
+                                <Label TextColor="#bbb" FontSize="22">Album</Label>
+                                <Label TextColor="#bbb" FontSize="22">Podcast</Label>
+                                <Label TextColor="#bbb" FontSize="22">Genres</Label>
+                                <Label TextColor="#bbb" FontSize="22">Other</Label>
+                            </StackLayout>
+                        </ScrollView>
+                        <FlexLayout x:Name="Artists" Direction="Column" AutomationId="Artists"
+                                    BindableLayout.ItemsSource="{Binding ArtistWithListeners}">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <card:ArtistWithListeners 
+                                        x:DataType="model:ArtistWithListeners" 
+                                        Margin="0, 5" 
+                                        Artist="{Binding Name}" 
+                                        Listeners="{Binding ListenersCount, Converter={StaticResource LongToFormattedString}}"
+                                        Source="{Binding ImageSource}" />
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
