@@ -12,9 +12,9 @@ Este projeto mostra o meu progresso no aprendizado de duas novas tecnologias, C#
 Não foram implementadas todas as telas que estão no design do Figma, pretendo implementar em breve. No entanto, na unica tela implementada foi possível utilizar vários recursos disponíveis no Xamarin.
 
 #### Adaptação na nova linguagem de programação
-O processo de adaptação na linguagem C# está sendo relativamente bem simples, devida a muitas semelhanças com Java, o processo de aprendizado se torna facil. Estou precisando aprender apenas as bibliotecas nativas da linguagem, e estou seguindo um pequeno guia 'C# for Java Developers'. 
+O processo de adaptação na linguagem C# está sendo relativamente bem simples devida a muitas semelhanças com Java, o processo de aprendizado se torna facil. Estou precisando aprender apenas as bibliotecas nativas da linguagem, e também estou seguindo um pequeno guia 'C# for Java Developers'. 
 
-Outra coisa que me aventurei em aprender foram as features diferentes do Java que por serem parecidas ou iguais as features do Kotlin como:
+Outra coisa que me aventurei em aprender foram as features do C# que são diferentes do Java, e algumas tem semelhanças com o kotlin como:
 
 - Inline Functions (ou Inline Methods)
 - Delegate Properties (`{ get; set; }`)
@@ -26,7 +26,7 @@ Outra coisa que me aventurei em aprender foram as features diferentes do Java qu
 - Entre outras coisas.
 
 ### Do Android ao Xamarin
-Para aprender sobre Xamarin.Forms estou usando a [documentação oficial](https://learn.microsoft.com/en-us/xamarin/) e usando o StackOverflow para algumas questões que surgem durante o aprendizado. Antes de começar a implementar a interface e lógica de negócio apenas no Xamarin.Forms, decidi começar pelo Xamarin.Android. 
+Para aprender sobre Xamarin.Forms estou usando a [documentação oficial](https://learn.microsoft.com/en-us/xamarin/) e o StackOverflow para algumas questões que surgem durante o aprendizado. Antes de começar a implementar a interface e lógica de negócio apenas no Xamarin.Forms, decidi começar pelo Xamarin.Android. 
 
 O Xamarin.Android implementa a mesma especificação que existe no desenvolvimento nativo com Kotlin/Java, ou seja, os códigos que você escreve em Kotlin/Java podem funcionar no Xamarin com algumas adaptações. Um exemplo disso são as Activities que são identicas:
 ```kotlin
